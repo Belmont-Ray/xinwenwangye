@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>太空科技综合平台</title>
+    <style>
+        /* 导航栏样式 */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #fff;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        .nav-button {
+            padding: 10px 25px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .active-page {
+            background: #2c3e50;
+            color: white;
+        }
+
+        /* 页面容器 */
+        .page-container {
+            display: none;
+            margin-top: 70px;
+            padding: 20px;
+        }
+
+        /* 新闻页面样式 */
+        .news-container {
+            width: 85%;
+            margin: 0 auto;
+        }
+        .news-item {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        .news-item img {
+            width: 48%;
+            height: 200px;
+            object-fit: cover;
+            margin: 15px 0;
+        }
+
+        /* 知识展示页面样式 */
+        .knowledge-container {
+            display: flex;
+            gap: 30px;
+            padding: 40px;
+        }
+        .tech-card {
+            flex: 1;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .tech-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <div class="nav-bar">
+        <button class="nav-button active-page" onclick="showPage('news-page')">新闻频道</button>
+        <button class="nav-button" onclick="showPage('knowledge-page')">知识图谱</button>
+    </div>
+
+    <!-- 新闻页面 -->
+    <div class="page-container" id="news-page">
+        <div class="news-container">
+            <h1>频道【直播】太空探测</h1>
+            <hr>
+            
+            <div class="news-item">
+                <h2>飞行了200多亿公里的旅行者1号，为何不会撞上太空中的小行星</h2>
+                <img src="图片1.jpg" alt="旅行者1号">
+                <p>作者：太空探索编辑部 | 发布时间：2023-11-15</p>
+            </div>
+
+            <div class="news-item">
+                <h2>欧洲探测器从4亿公里外拍摄多张照片</h2>
+                <img src="图片2.jpg" alt="深空探测器">
+                <p>作者：星际观测站 | 发布时间：2023-11-14</p>
+            </div>
+
+            <div class="news-item">
+                <h2>为什么太空没有氧气，陨石仍然能够燃烧</h2>
+                <img src="图片3.jpg" alt="陨石燃烧">
+                <p>作者：天体物理研究所 | 发布时间：2023-11-13</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 知识展示页面 -->
+    <div class="page-container" id="knowledge-page">
+        <div class="knowledge-container">
+            <!-- HTML知识区 -->
+            <div class="tech-card">
+                <img src="图片4.jpg" alt="HTML技术">
+                <h3>HTML核心技术</h3>
+                <ul>
+                    <li>HTML文档结构解析</li>
+                    <li>HTML5新特性：语义化标签</li>
+                    <li>多媒体嵌入与Canvas技术</li>
+                </ul>
+            </div>
+
+            <!-- CSS知识区 -->
+            <div class="tech-card">
+                <img src="图片5.jpg" alt="CSS技术">
+                <h3>CSS核心技术</h3>
+                <ul>
+                    <li>选择器优先级机制</li>
+                    <li>Flex弹性盒布局系统</li>
+                    <li>CSS3动画与过渡效果</li>
+                </ul>
+            </div>
+
+            <!-- JavaScript知识区 -->
+            <div class="tech-card">
+                <img src="图片6.jpg" alt="JS技术">
+                <h3>JavaScript核心技术</h3>
+                <ul>
+                    <li>ES6+新特性解析</li>
+                    <li>DOM/BOM操作原理</li>
+                    <li>异步编程与事件循环</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            // 隐藏所有页面
+            document.querySelectorAll('.page-container').forEach(page => {
+                page.style.display = 'none';
+            });
+            
+            // 显示目标页面
+            document.getElementById(pageId).style.display = 'block';
+            
+            // 更新按钮状态
+            document.querySelectorAll('.nav-button').forEach(btn => {
+                btn.classList.remove('active-page');
+            });
+            event.target.classList.add('active-page');
+        }
+
+        // 默认显示新闻页面
+        window.onload = () => showPage('news-page');
+    </script>
+</body>
+</html>
